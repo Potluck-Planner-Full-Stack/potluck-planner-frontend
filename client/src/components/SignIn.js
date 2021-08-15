@@ -35,26 +35,28 @@ const SignIn = () => {
     }
 
     return(
-        <div className="formContainer">
-            <Form className="form">
-                <Form.Group className="mb-3" controlId="formBasicusername" value={formValues.username} onChange={handleChange}>
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter username" name="username"/>
-                </Form.Group>
+        <div className="splash">
+            <div className="formContainer">
+                <Form className="form">
+                    <Form.Group className="mb-3" controlId="formBasicusername" value={formValues.username} onChange={handleChange}>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" placeholder="Enter username" name="username"/>
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password"/>
-                    <Form.Text className="text-muted">
-                        <Link to='/register'>
-                            Don't have an account?
-                        </Link>
-                    </Form.Text>
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    Sign In
-                </Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" name="password"/>
+                        <Form.Text className="text-muted">
+                            <Link to='/register'>
+                                Don't have an account?
+                            </Link>
+                        </Form.Text>
+                    </Form.Group>
+                    <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
+                        Sign In
+                    </Button>
+                </Form>
+            </div>
         </div>
     )
 }

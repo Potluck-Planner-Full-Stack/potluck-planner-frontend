@@ -26,8 +26,8 @@ const NavBar = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
-                            {loggedIn ? <></> : <Nav.Link href="/SignIn">Sign In</Nav.Link>}
-                            {loggedIn ? <></> : <Nav.Link href="/Register">Register</Nav.Link>}
+                            {loggedIn ? <></> : <Nav.Link href="/sign-in">Sign In</Nav.Link>}
+                            {loggedIn ? <></> : <Nav.Link href="/register">Register</Nav.Link>}
                             {loggedIn ? <Nav.Link href="/home" onClick={logout}>Logout</Nav.Link> : <></>}
                         </Nav>
                     </Navbar.Collapse>
@@ -38,19 +38,19 @@ const NavBar = () => {
                 <Home/>
             </Route>
 
-            <Route path="/SignIn">
+            <Route path="/sign-in">
                 <SignIn/>
             </Route>
 
-            <Route path="/Register">
+            <Route path="/register">
                 <Register/>
             </Route>
 
-            <Route path="/Potlucks">
+            <Route path="/potlucks">
                 <Potlucks/>
             </Route>
 
-            <Route path="/PotluckPage/:id">
+            <Route path="/potluck-page/:id">
                 <PotluckPage/>
             </Route>
 

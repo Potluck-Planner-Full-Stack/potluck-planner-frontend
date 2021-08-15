@@ -2,6 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const initialFormValues = {
     username: '',
@@ -29,21 +30,28 @@ const Register = () => {
     }
 
     return(
-        <div className="formContainer">
-            <Form className="form">
-                <Form.Group className="mb-3" controlId="formBasicusername" value={formValues.username} onChange={handleChange}>
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter username" name="username"/>
-                </Form.Group>
+        <div className="splash">
+            <div className="formContainer">
+                <Form className="form">
+                    <Form.Group className="mb-3" controlId="formBasicusername" value={formValues.username} onChange={handleChange}>
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" placeholder="Enter username" name="username"/>
+                    </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" name="password"/>
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    Register
-                </Button>
-            </Form>
+                    <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" name="password"/>
+                        <Form.Text className="text-muted">
+                            <Link to='/sign-in'>
+                                Already have an account?
+                            </Link>
+                        </Form.Text>
+                    </Form.Group>
+                    <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
+                        Register
+                    </Button>
+                </Form>
+            </div>
         </div>
     )
 }

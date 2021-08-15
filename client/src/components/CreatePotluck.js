@@ -66,7 +66,7 @@ const CreatePotluck = () => {
                     <Form.Control placeholder="Address" name="potluck_location"/>
                 </Form.Group>
 
-                <Button variant="primary" type="submit" onClick={handleSubmit}>
+                <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
                     Submit
                 </Button>
             </Form>

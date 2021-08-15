@@ -7,7 +7,7 @@ const PotluckCard = (props) => {
     const { push } = useHistory()
 
     const moreInfo = () => {
-        push(`/PotluckPage/${id}`)
+        push(`/potluck-page/${id}`)
     }
 
     return(
