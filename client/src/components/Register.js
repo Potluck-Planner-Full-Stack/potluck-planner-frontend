@@ -9,7 +9,7 @@ const initialFormValues = {
     password: ''
 }
 
-const SignIn = () => {
+const Register = () => {
     const [formValues, setFormValues] = useState(initialFormValues)
 
     const handleChange = (e) => {
@@ -22,7 +22,7 @@ const SignIn = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://ft-potluck-planner-backend.herokuapp.com/api/auth/login', formValues)
+        axios.post('https://ft-potluck-planner-backend.herokuapp.com/api/auth/register', formValues)
         .then(res => console.log(res))
         .catch(err => {
             console.log(err)
@@ -41,18 +41,13 @@ const SignIn = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" name="password"/>
-                    <Form.Text className="text-muted">
-                        <Link to='/register'>
-                            Don't have an account?
-                        </Link>
-                    </Form.Text>
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={handleSubmit}>
-                    Sign In
+                    Register
                 </Button>
             </Form>
         </div>
     )
 }
 
-export default SignIn
+export default Register
