@@ -18,9 +18,9 @@ const Potlucks = () => {
 
     return(
         <div>
-            <h1>Hello world</h1>
+            <h1>Potlucks</h1>
             {
-                potlucks.map(potluck => <PotluckCard key={potluck.potluck_id} name={potluck.potluck_name} date={potluck.potluck_date} time={potluck.potluck_time} location={potluck.potluck_location} items={potluck.items} guests={potluck.guests}/>)
+                potlucks.map(potluck => <PotluckCard key={potluck.potluck_id} id={potluck.potluck_id} name={potluck.potluck_name} date={potluck.potluck_date} time={potluck.potluck_time} location={potluck.potluck_location} items={potluck.items} guests={potluck.guests}/>)
             }
         </div>
     )

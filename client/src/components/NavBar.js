@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom'
 import SignIn from './SignIn'
 import Register from './Register'
 import Potlucks from './Potlucks'
+import PotluckPage from './PotluckPage'
 
 const NavBar = () => {
     return (
@@ -34,6 +35,10 @@ const NavBar = () => {
 
             <Route path="/Potlucks">
                 <Potlucks/>
+            </Route>
+
+            <Route path="/PotluckPage/:id">
+                <PotluckPage/>
             </Route>
 
         </div>
