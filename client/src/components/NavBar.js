@@ -8,8 +8,15 @@ import Register from './Register'
 import Potlucks from './Potlucks'
 import PotluckPage from './PotluckPage'
 import CreatePotluck from './CreatePotluck'
+import Home from './Home'
 
 const NavBar = () => {
+    const loggedIn = localStorage.getItem("token")
+
+    const logout = () => {
+        localStorage.removeItem("token")
+    }
+
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -18,13 +25,18 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#">Home</Nav.Link>
-                            <Nav.Link href="/SignIn">Sign In</Nav.Link>
-                            <Nav.Link href="/Register">Register</Nav.Link>
+                            <Nav.Link href="/home">Home</Nav.Link>
+                            {loggedIn ? <></> : <Nav.Link href="/SignIn">Sign In</Nav.Link>}
+                            {loggedIn ? <></> : <Nav.Link href="/Register">Register</Nav.Link>}
+                            {loggedIn ? <Nav.Link href="/home" onClick={logout}>Logout</Nav.Link> : <></>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+
+            <Route path="/home">
+                <Home/>
+            </Route>
 
             <Route path="/SignIn">
                 <SignIn/>
