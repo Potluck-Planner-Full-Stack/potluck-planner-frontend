@@ -2,9 +2,10 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import SignIn from './SignIn'
 import Register from './Register'
+import Potlucks from './Potlucks'
 
 const NavBar = () => {
     return (
@@ -27,9 +28,13 @@ const NavBar = () => {
                 <SignIn/>
             </Route>
 
-            <Route path="/Register"/>
+            <Route path="/Register">
                 <Register/>
-            <Route/>
+            </Route>
+
+            <Route path="/Potlucks">
+                <Potlucks/>
+            </Route>
 
         </div>
     )

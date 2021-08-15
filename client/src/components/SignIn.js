@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const initialFormValues = {
     username: '',
@@ -11,6 +11,7 @@ const initialFormValues = {
 
 const SignIn = () => {
     const [formValues, setFormValues] = useState(initialFormValues)
+    const { push } = useHistory()
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -23,7 +24,10 @@ const SignIn = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('https://ft-potluck-planner-backend.herokuapp.com/api/auth/login', formValues)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            push('/Potlucks')
+        })
         .catch(err => {
             console.log(err)
         })
