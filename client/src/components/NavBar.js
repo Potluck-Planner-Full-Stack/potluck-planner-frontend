@@ -7,6 +7,7 @@ import SignIn from './SignIn'
 import Register from './Register'
 import Potlucks from './Potlucks'
 import PotluckPage from './PotluckPage'
+import CreatePotluck from './CreatePotluck'
 
 const NavBar = () => {
     return (
@@ -39,6 +40,10 @@ const NavBar = () => {
 
             <Route path="/PotluckPage/:id">
                 <PotluckPage/>
+            </Route>
+
+            <Route path="/create-potluck">
+                <CreatePotluck/>
             </Route>
 
         </div>

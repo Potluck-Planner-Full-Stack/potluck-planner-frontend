@@ -1,6 +1,4 @@
 import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
-import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
 

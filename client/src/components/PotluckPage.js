@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import dateFormat from 'dateformat'
 
 const initialPotluck = {
@@ -32,7 +31,7 @@ const PotluckPage = () => {
     }, [])
 
     return(
-        <div>
+        <Container className="potluckWrapper">
             <Container>
                 <Row>
                     {potluck.potluck_name}
@@ -46,15 +45,14 @@ const PotluckPage = () => {
                 <Row>
                     Location: {potluck.potluck_location}
                 </Row>
-                <Row>
-                    {potluck.items.length ? potluck.items.map(item => <Col>{item.item_name}</Col>) : <p>Loading...</p>}
+                <Row>Items:
+                    {potluck.items.length ? potluck.items.map(item => <Row>{item.item_name}</Row>) : <p>Loading...</p>}
                 </Row>
-                <Row>
-                    {potluck.guests.length ? potluck.guests.map(guest => <Col>{guest.username}</Col>) : <p>Loading...</p>}
+                <Row>Guests:
+                    {potluck.guests.length ? potluck.guests.map(guest => <Row>{guest.username}</Row>) : <p>Loading...</p>}
                 </Row>
-            </Container>
-            
-        </div>
+            </Container>   
+        </Container>
     )
 }
 

@@ -32,3 +32,10 @@
 .mb-3 {
   padding: 1em;
 }
+
+.potluckWrapper {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
