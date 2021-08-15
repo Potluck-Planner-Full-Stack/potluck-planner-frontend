@@ -26,6 +26,7 @@ const SignIn = () => {
         axios.post('https://ft-potluck-planner-backend.herokuapp.com/api/auth/login', formValues)
         .then(res => {
             console.log(res)
+            localStorage.setItem("token", res.data.token)
             push('/Potlucks')
         })
         .catch(err => {
@@ -33,7 +34,6 @@ const SignIn = () => {
         })
     }
 
-    console.log(formValues)
     return(
         <div className="formContainer">
             <Form className="form">

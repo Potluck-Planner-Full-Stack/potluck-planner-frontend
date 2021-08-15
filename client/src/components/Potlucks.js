@@ -1,9 +1,16 @@
 import { useEffect } from 'react'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const Potlucks = () => {
 
     useEffect(() => {
-        
+        axiosWithAuth().get('/api/potlucks')
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }, [])
 
     return(
