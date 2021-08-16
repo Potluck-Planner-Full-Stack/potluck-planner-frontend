@@ -40,12 +40,8 @@ const NavBar = () => {
                 </Container>
             </Navbar>
 
-            <Route path="/">
-                <Home/>
-            </Route>
-
             <Route path="/sign-in">
-                <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+                <SignIn setLoggedIn={setLoggedIn}/>
             </Route>
 
             <Route path="/register">
@@ -66,6 +62,10 @@ const NavBar = () => {
 
             <Route path="/edit-potluck/:id">
                 <EditPotluck/>
+            </Route>
+
+            <Route path="/">
+                <Home/>
             </Route>
 
         </div>

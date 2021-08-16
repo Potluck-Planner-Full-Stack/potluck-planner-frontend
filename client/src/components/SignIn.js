@@ -21,7 +21,7 @@ const SignIn = (props) => {
     const [formErrorValues, setFormErrorValues] = useState(initialFormErrorValues)
     const [disabled, setDisabled] = useState(true);
     const [error, setError] = useState(false)
-    const { loggedIn, setLoggedIn } = props
+    const { setLoggedIn } = props
     const { push } = useHistory()
 
     useEffect(() => {
