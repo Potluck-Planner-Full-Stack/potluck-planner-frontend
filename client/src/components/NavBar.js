@@ -64,7 +64,7 @@ const NavBar = () => {
                 <EditPotluck/>
             </Route>
 
-            <Route path="/">
+            <Route exact path="/">
                 <Home/>
             </Route>
 
