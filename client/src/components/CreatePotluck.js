@@ -30,7 +30,7 @@ const CreatePotluck = () => {
         .post('/api/potlucks', formValues)
         .then(res => {
             console.log(res.data.potluck_id)
-            push(`/add-items/${res.data.potluck_id}`)
+            push(`/potluck-page/${res.data.potluck_id}`)
         })
         .catch(err => {
             console.log(err)
@@ -39,11 +39,11 @@ const CreatePotluck = () => {
     }
 
     return(
-        <div className="formContainer">
+        <div className="formContainer splash">
             <Form>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail" value="potluck.potluck_name" onChange={handleChange}>
-                        <Form.Label>Potluck Name</Form.Label>
+                        <Form.Label >Potluck Name</Form.Label>
                         <Form.Control placeholder="Enter potluck name" name="potluck_name"/>
                     </Form.Group>
 
@@ -67,7 +67,7 @@ const CreatePotluck = () => {
                 </Form.Group>
 
                 <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
-                    Submit
+                    Create
                 </Button>
             </Form>
         </div>

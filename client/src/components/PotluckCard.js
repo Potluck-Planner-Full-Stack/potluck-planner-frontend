@@ -1,14 +1,11 @@
 import Card from 'react-bootstrap/Card'
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 const PotluckCard = (props) => {
     const { id, name, date, time, location } = props
     const { push } = useHistory()
-
-    const moreInfo = () => {
-        push(`/potluck-page/${id}`)
-    }
 
     return(
         <div>
@@ -26,8 +23,7 @@ const PotluckCard = (props) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Body>
-                    <Card.Link onClick={moreInfo}>More Info</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
+                    <Button variant="primary" className="button" type="submit" onClick={() => push(`/potluck-page/${id}`)}>More Info</Button>
                 </Card.Body>
             </Card>
         </div>

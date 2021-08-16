@@ -43,7 +43,7 @@
 }
 
 .formContainer {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,4 +83,9 @@
 
 h1 {
   padding: 1em;
+}
+
+.cardButtons {
+  display: flex;
+  justify-content: space-between;
 }

@@ -7,6 +7,10 @@ import Col from 'react-bootstrap/Col'
 import dateFormat from 'dateformat'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import Accordion from 'react-bootstrap/Accordion'
 
 const initialPotluck = {
     potluck_id: '',
@@ -24,6 +28,7 @@ const PotluckPage = () => {
     const [isOrganizer, setIsOrganizer] = useState(false)
     const [item, setItem] = useState()
     const [guest, setGuest] = useState()
+    const [update, setUpdate] = useState(false)
     const user = localStorage.getItem("user")
     const { push } = useHistory()
 
@@ -44,7 +49,7 @@ const PotluckPage = () => {
         }).catch(err => {
             console.log(err)
         })
-    }, [])
+    }, [update])
 
     const handleDelete = () => {
         axiosWithAuth()
@@ -58,9 +63,16 @@ const PotluckPage = () => {
         })
     }
 
-    const handleChange = (e) => {
+    const handleItemChange = (e) => {
         e.preventDefault()
         setItem({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleGuestChange = (e) => {
+        e.preventDefault()
+        setGuest({
             [e.target.name]: e.target.value
         })
     }
@@ -71,10 +83,13 @@ const PotluckPage = () => {
         .post(`/api/potlucks/${id}/items`, item)
         .then(res => {
             console.log(res)
+            setUpdate(true)
+            setUpdate(false)
         })
         .catch(err => {
             console.log(err)
         })
+        setItem({item_name: ''})
     }
 
     const handleGuestSubmit = (e) => {
@@ -83,6 +98,8 @@ const PotluckPage = () => {
         .post(`/api/potlucks/${id}/guests`, guest)
         .then(res => {
             console.log(res)
+            setUpdate(true)
+            setUpdate(false)
         })
         .catch(err => {
             console.log(err)
@@ -90,57 +107,72 @@ const PotluckPage = () => {
     }
 
     return(
-        <Container className="potluckWrapper">
-            <Container>
-                <Row>
-                    {potluck.potluck_name}
-                </Row>
-                <Row>
-                    Date: {dateFormat(potluck.potluck_date, "dddd, mmmm dS, yyyy")}
-                </Row>
-                <Row>
-                    Time: {potluck.potluck_time}
-                </Row>
-                <Row>
-                    Location: {potluck.potluck_location}
-                </Row>
-                <Row>Items:
-                    {potluck.items.length ? potluck.items.map(item => <Row key={item.item_id}>{item.item_name}</Row>) : <p>Loading...</p>}
-                </Row>
-                <Row>Guests:
-                    {potluck.guests.length ? potluck.guests.map(guest => <Row key={guest.user_id}>{guest.username}</Row>) : <p>Loading...</p>}
-                </Row>
-                    {isOrganizer ? 
-                    <div>
-                        <Row>
-                            <Col>
-                                {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => push(`/edit-potluck/${id}`)}>
-                                    Edit
-                                </Button> : <></>}
-                            </Col>
-                            <Col>
-                                {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={handleDelete}>
-                                    Delete
-                                </Button> : <></>}
-                            </Col>
-                        </Row>
-                        <Form className="form">
-                            <Form.Group className="mb-3" controlId="formBasicItem" value={item} onChange={handleChange}>
-                                <Form.Label>Add Item</Form.Label>
-                                <Form.Control placeholder="Enter Item Name" name="item_name"/>
-                            </Form.Group>
-                            <Button variant="primary" className="button" type="submit" onClick={handleItemSubmit}>Add Item</Button>
-                        </Form>
-                        <Form className="form">
-                            <Form.Group className="mb-3" controlId="formBasicItem" value={guest} onChange={handleChange}>
-                                <Form.Label>Add Guest</Form.Label>
-                                <Form.Control placeholder="Enter Guest's Username" name="username"/>
-                            </Form.Group>
-                            <Button variant="primary" className="button" type="submit" onClick={handleGuestSubmit}>Add Guest</Button>
-                        </Form>
-                    </div> : <></>}
-            </Container>   
-        </Container>
+        <div className="splash">
+            <Container className="potluckWrapper">
+                <Card style={{ width: '50rem' }}>
+                    <Card.Body>
+                        <Card.Title>{potluck.potluck_name}</Card.Title>
+                        <Card.Text>
+                            Date: {dateFormat(potluck.potluck_date, "dddd, mmmm dS, yyyy")}
+                        </Card.Text>
+                        <Card.Text>
+                            Time: {potluck.potluck_time}
+                        </Card.Text>
+                        <Card.Text>
+                            Location: {potluck.potluck_location}
+                        </Card.Text>
+                    </Card.Body>
+
+                    <Accordion>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Items</Accordion.Header>
+                            <Accordion.Body>
+                                {potluck.items.length ? potluck.items.map(item => <Row key={item.item_id}>{item.item_name}</Row>) : <p>Loading...</p>}
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Guests</Accordion.Header>
+                            <Accordion.Body>
+                                <ListGroup className="list-group-flush">
+                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id}>{guest.username}</ListGroupItem>) : <p>Loading...</p>}
+                                </ListGroup>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+
+                    
+                    <Card.Body className="cardButtons">
+                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => push(`/edit-potluck/${id}`)}>
+                            Edit
+                            </Button> : <></>
+                        }
+                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={handleDelete}>
+                            Delete
+                            </Button> : <></>
+                        }
+                    </Card.Body>
+                </Card>
+                <Container>
+                        {isOrganizer ? 
+                        <div>
+                            <Form className="form">
+                                <Form.Group className="mb-3" controlId="formBasicItem" value={item} onChange={handleItemChange}>
+                                    <Form.Label>Add Item</Form.Label>
+                                    <Form.Control placeholder="Enter Item Name" name="item_name"/>
+                                </Form.Group>
+                                <Button variant="primary" className="button" type="submit" onClick={handleItemSubmit}>Add Item</Button>
+                            </Form>
+                            <Form className="form">
+                                <Form.Group className="mb-3" controlId="formBasicItem" value={guest} onChange={handleGuestChange}>
+                                    <Form.Label>Add Guest</Form.Label>
+                                    <Form.Control placeholder="Enter Guest's Username" name="username"/>
+                                </Form.Group>
+                                <Button variant="primary" className="button" type="submit" onClick={handleGuestSubmit}>Add Guest</Button>
+                            </Form>
+                        </div> : <></>}
+                </Container>   
+            </Container>
+        </div>
     )
 }
 
