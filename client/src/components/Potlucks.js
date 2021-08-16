@@ -7,8 +7,10 @@ import { useHistory } from 'react-router-dom'
 const Potlucks = () => {
     const [potlucks, setPotlucks] = useState([])
     const { push } = useHistory()
+    const [user, setUser] = useState()
 
     useEffect(() => {
+        setUser(localStorage.getItem("user"))
         axiosWithAuth().get('/api/potlucks')
         .then(res => {
             console.log(res.data)

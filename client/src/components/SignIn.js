@@ -27,7 +27,8 @@ const SignIn = () => {
         .then(res => {
             console.log(res)
             localStorage.setItem("token", res.data.token)
-            push('/Potlucks')
+            localStorage.setItem("user", res.data.username)
+            push('/potlucks')
         })
         .catch(err => {
             console.log(err)

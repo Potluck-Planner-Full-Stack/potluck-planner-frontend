@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
@@ -12,7 +12,11 @@ import Home from './Home'
 import EditPotluck from './EditPotluck'
 
 const NavBar = () => {
-    const loggedIn = localStorage.getItem("token")
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    useEffect(() => {
+        setLoggedIn(localStorage.getItem("token"))
+    },[])
 
     const logout = () => {
         localStorage.removeItem("token")
@@ -29,6 +33,7 @@ const NavBar = () => {
                             <Nav.Link href="/home">Home</Nav.Link>
                             {loggedIn ? <></> : <Nav.Link href="/sign-in">Sign In</Nav.Link>}
                             {loggedIn ? <></> : <Nav.Link href="/register">Register</Nav.Link>}
+                            {loggedIn ? <Nav.Link href="/potlucks">Potlucks</Nav.Link> : <></>}
                             {loggedIn ? <Nav.Link href="/home" onClick={logout}>Logout</Nav.Link> : <></>}
                         </Nav>
                     </Navbar.Collapse>

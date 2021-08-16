@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import dateFormat from 'dateformat'
+import Button from 'react-bootstrap/Button'
 
 const initialPotluck = {
     potluck_id: '',
@@ -18,17 +20,40 @@ const initialPotluck = {
 const PotluckPage = () => {
     const { id } = useParams()
     const [potluck, setPotluck] = useState(initialPotluck)
+    const [isOrganizer, setIsOrganizer] = useState(false)
+    const user = localStorage.getItem("user")
+    const { push } = useHistory()
 
     useEffect(() => {
         axiosWithAuth()
         .get(`/api/potlucks/${id}`)
         .then(res => {
-            console.log(res.data)
             setPotluck(res.data)
+            console.log(res.data.guests)
+            return res.data.guests
+        }).then(res => {
+            const organizer = res.filter(guest => {
+                return guest.username === user
+            })
+
+            organizer[0].is_organizer === true ? setIsOrganizer(true) : setIsOrganizer(false)
+
         }).catch(err => {
             console.log(err)
         })
     }, [])
+
+    const handleDelete = () => {
+        axiosWithAuth()
+        .delete(`/api/potlucks/${id}`)
+        .then(res => {
+            console.log(res)
+            push('/potlucks')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     return(
         <Container className="potluckWrapper">
@@ -46,10 +71,22 @@ const PotluckPage = () => {
                     Location: {potluck.potluck_location}
                 </Row>
                 <Row>Items:
-                    {potluck.items.length ? potluck.items.map(item => <Row>{item.item_name}</Row>) : <p>Loading...</p>}
+                    {potluck.items.length ? potluck.items.map(item => <Row key={item.item_id}>{item.item_name}</Row>) : <p>Loading...</p>}
                 </Row>
                 <Row>Guests:
-                    {potluck.guests.length ? potluck.guests.map(guest => <Row>{guest.username}</Row>) : <p>Loading...</p>}
+                    {potluck.guests.length ? potluck.guests.map(guest => <Row key={guest.user_id}>{guest.username}</Row>) : <p>Loading...</p>}
+                </Row>
+                <Row>
+                    <Col>
+                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => push(`/edit-potluck/${id}`)}>
+                            Edit
+                        </Button> : <></>}
+                    </Col>
+                    <Col>
+                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={handleDelete}>
+                            Delete
+                        </Button> : <></>}
+                    </Col>
                 </Row>
             </Container>   
         </Container>
