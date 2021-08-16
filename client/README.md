@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+Potluck Planner frontend repo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
+    - clone repo
+    - cd into 'potluck-planner-frontend' directory
+    - run 'npm install'
+    - run 'npm start'
 
-## Available Scripts
+### Contributing
+    - Clone down 'potluck-planner-frontend' repo WITHOUT FORKING.
+    - Point your terminal to your local folder.
+    - Checkout a new branch. (Branches should be made for each new feature/subject you're working on. EX: git checkout -b navbar - for working on the Navbar component)
+    - Once you've finished your feature or section, (Remembering to make commits along the way.) push your branch up to Github. (EX: git push origin -u navbar)
+    - Make your pull request - a team member will approve it.
+    - In your terminal, checkout the main branch again. (git checkout main)
+    - Delete your local copy of your old branch. (EX: git branch -d navbar)
+    - REMEMBER: Pull down any new changes on the remote repo BEFORE starting work on a new feature/component. This takes two commands: (git fetch --all) & (git pull origin main)
+    - Checkout a new branch and start work on your new feature
 
-In the project directory, you can run:
 
-### `npm start`
+### App Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If you have ever tried to organize a potluck through text messages, online to-do lists or spreadsheets, you'll understand why this app is essential. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In the world of social gatherings and potlucks the "Potluck Planner" is king. This is your place for all things pot luck.
 
-### `npm test`
+1. As an `organizer` you can create an upcoming `potluck` and invite my friends to attend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. As an `organizer` you can adjust `date`s, `time`s and `location`s of the potluck
 
-### `npm run build`
+3. As an `organizer` you can use the list feature in my app to add food `items` that we'd like to see at the potluck
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. As a `guest` to a potluck you can confirm that I'm going to the upcoming `event` ***feature coming soon*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. As a `guest` you can select which `item`s I'd like to be responsible for bringing
