@@ -69,3 +69,18 @@
   background-color: #6b8970;
   border: #6b8970;
 }
+
+.potlucksContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.card {
+  margin: 2em;
+}
+
+h1 {
+  padding: 1em;
+}

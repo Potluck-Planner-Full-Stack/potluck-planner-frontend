@@ -9,6 +9,7 @@ import Potlucks from './Potlucks'
 import PotluckPage from './PotluckPage'
 import CreatePotluck from './CreatePotluck'
 import Home from './Home'
+import EditPotluck from './EditPotluck'
 
 const NavBar = () => {
     const loggedIn = localStorage.getItem("token")
@@ -56,6 +57,10 @@ const NavBar = () => {
 
             <Route path="/create-potluck">
                 <CreatePotluck/>
+            </Route>
+
+            <Route path="/edit-potluck/:id">
+                <EditPotluck/>
             </Route>
 
         </div>
