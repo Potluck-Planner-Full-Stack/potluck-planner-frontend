@@ -77,17 +77,17 @@ const PotluckPage = () => {
         })
     }
 
-    // const handleGuestSubmit = (e) => {
-    //     e.preventDefault()
-    //     axiosWithAuth()
-    //     .post(`/api/potlucks/${id}/items`, item)
-    //     .then(res => {
-    //         console.log(res)
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     })
-    // }
+    const handleGuestSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth()
+        .post(`/api/potlucks/${id}/guests`, guest)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
 
     return(
         <Container className="potluckWrapper">
@@ -136,7 +136,7 @@ const PotluckPage = () => {
                                 <Form.Label>Add Guest</Form.Label>
                                 <Form.Control placeholder="Enter Guest's Username" name="username"/>
                             </Form.Group>
-                            <Button variant="primary" className="button" type="submit">Add Guest</Button>
+                            <Button variant="primary" className="button" type="submit" onClick={handleGuestSubmit}>Add Guest</Button>
                         </Form>
                     </div> : <></>}
             </Container>   
