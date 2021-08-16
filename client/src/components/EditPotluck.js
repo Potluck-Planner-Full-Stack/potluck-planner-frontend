@@ -25,7 +25,12 @@ const EditPotluck = () => {
         axiosWithAuth()
         .get(`/api/potlucks/${id}`)
         .then(res => {
-            setFormValues(res.data)
+            setFormValues({
+                potluck_name: res.data.potluck_name,
+                potluck_date: res.data.potluck_date,
+                potluck_time: res.data.potluck_time,
+                potluck_location: res.data.potluck_location
+            })
         })
         .catch(err => {
             console.log(err)
@@ -50,8 +55,8 @@ const EditPotluck = () => {
         .catch(err => {
             console.log(err)
         })
-        setFormValues(initialFormValues)
     }
+    console.log(formValues)
 
     const date = (dateFormat(formValues.potluck_date, "yyyy-mm-dd"))
 
@@ -61,7 +66,7 @@ const EditPotluck = () => {
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridEmail" value={formValues.potluck_name} onChange={handleChange}>
                         <Form.Label>Potluck Name</Form.Label>
-                        <Form.Control name="potluck_name"/>
+                        <Form.Control name="potluck_name" value={formValues.potluck_name}/>
                     </Form.Group>
 
                 </Row>
@@ -73,14 +78,14 @@ const EditPotluck = () => {
 
                 <Form.Group as={Col} controlId="formGridTime" value={formValues.potluck_time} onChange={handleChange}>
                     <Form.Label>Time</Form.Label>
-                    <Form.Control type="time" name="potluck_time"/>
+                    <Form.Control type="time" name="potluck_time" value={formValues.potluck_time}/>
                 </Form.Group>
 
                 </Row>
 
                 <Form.Group className="mb-3" controlId="formGridAddress2" value={formValues.potluck_location} onChange={handleChange}>
                     <Form.Label>Location</Form.Label>
-                    <Form.Control placeholder="Address" name="potluck_location"/>
+                    <Form.Control placeholder="Address" name="potluck_location" value={formValues.potluck_location}/>
                 </Form.Group>
 
                 {/* <Form.Group className="mb-3" controlId="formGridAddress2" value={formValues.items} onChange={handleChange}>

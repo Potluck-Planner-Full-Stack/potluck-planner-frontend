@@ -37,7 +37,7 @@ const CreatePotluck = () => {
         })
         setFormValues(initialFormValues)
     }
-    console.log(formValues)
+
     return(
         <div className="formContainer">
             <Form>
