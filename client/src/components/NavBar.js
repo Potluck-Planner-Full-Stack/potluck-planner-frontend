@@ -45,7 +45,7 @@ const NavBar = () => {
             </Route>
 
             <Route path="/sign-in">
-                <SignIn/>
+                <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
             </Route>
 
             <Route path="/register">

@@ -9,9 +9,10 @@ const initialFormValues = {
     password: ''
 }
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [formValues, setFormValues] = useState(initialFormValues)
     const { push } = useHistory()
+    const { loggedIn, setLoggedIn } = props
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -28,6 +29,7 @@ const SignIn = () => {
             console.log(res)
             localStorage.setItem("token", res.data.token)
             localStorage.setItem("user", res.data.username)
+            setLoggedIn(true)
             push('/potlucks')
         })
         .catch(err => {
