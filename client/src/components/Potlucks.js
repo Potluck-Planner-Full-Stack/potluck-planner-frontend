@@ -12,8 +12,14 @@ const Potlucks = () => {
 
         axiosWithAuth().get('/api/potlucks')
         .then(res => {
-            console.log(res.data)
-            setPotlucks(res.data)
+            const invited = []
+            res.data.map(potluck => {
+                potluck.guests.map(guest => {if(guest.username === localStorage.getItem("user")){
+                    invited.push(potluck)
+                }}) 
+                
+            })
+            setPotlucks(invited)
         })
         .catch(err => {
             console.log(err)
