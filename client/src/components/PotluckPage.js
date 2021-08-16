@@ -64,8 +64,30 @@ const PotluckPage = () => {
             [e.target.name]: e.target.value
         })
     }
-    console.log(item)
-    console.log(guest)
+
+    const handleItemSubmit = (e) => {
+        e.preventDefault()
+        axiosWithAuth()
+        .post(`/api/potlucks/${id}/items`, item)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    // const handleGuestSubmit = (e) => {
+    //     e.preventDefault()
+    //     axiosWithAuth()
+    //     .post(`/api/potlucks/${id}/items`, item)
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // }
 
     return(
         <Container className="potluckWrapper">
@@ -107,7 +129,7 @@ const PotluckPage = () => {
                                 <Form.Label>Add Item</Form.Label>
                                 <Form.Control placeholder="Enter Item Name" name="item_name"/>
                             </Form.Group>
-                            <Button variant="primary" className="button" type="submit">Add Item</Button>
+                            <Button variant="primary" className="button" type="submit" onClick={handleItemSubmit}>Add Item</Button>
                         </Form>
                         <Form className="form">
                             <Form.Group className="mb-3" controlId="formBasicItem" value={guest} onChange={handleChange}>
