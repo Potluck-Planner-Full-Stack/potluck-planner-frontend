@@ -9,7 +9,7 @@ const PotluckCard = (props) => {
 
     return(
         <div>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '20rem' }}>
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
