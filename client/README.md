@@ -30,6 +30,6 @@ In the world of social gatherings and potlucks the "Potluck Planner" is king. Th
 
 3. As an `organizer` you can use the list feature in my app to add food `items` that we'd like to see at the potluck
 
-4. As a `guest` to a potluck you can confirm that I'm going to the upcoming `event` ***feature coming soon*
+4. As a `guest` to a potluck you can confirm that I'm going to the upcoming `event` ***feature coming soon***
 
 5. As a `guest` you can select which `item`s I'd like to be responsible for bringing
