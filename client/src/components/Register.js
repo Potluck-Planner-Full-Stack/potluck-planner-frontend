@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import schema from '../validation/registerFormSchema'
 import * as yup from 'yup'
 
@@ -19,6 +19,13 @@ const initialFormErrorValues = {
 const Register = () => {
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrorValues, setFormErrorValues] = useState(initialFormErrorValues)
+    const [disabled, setDisabled] = useState(true);
+    const [error, setError] = useState(false)
+    const { push } = useHistory()
+
+    useEffect(() => {
+        schema.isValid(formValues).then(valid => setDisabled(!valid))
+    }, [formValues])
 
     const validate = (name, value) => {
         yup.reach(schema, name)
@@ -37,10 +44,15 @@ const Register = () => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault()
         axios.post('https://ft-potluck-planner-backend.herokuapp.com/api/auth/register', formValues)
-        .then(res => console.log(res))
+        .then(res => {
+            console.log(res)
+            push('/sign-in')
+        })
         .catch(err => {
             console.log(err)
+            setError(true)
         })
     }
 
@@ -52,6 +64,7 @@ const Register = () => {
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="username" placeholder="Enter username" name="username"/>
                         {formErrorValues.username ? <Form.Text className="error">{formErrorValues.username}</Form.Text> : null}
+                        {error ? <Form.Text className="error">Username already taken</Form.Text> : null}
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword" value={formValues.password} onChange={handleChange}>
@@ -59,15 +72,13 @@ const Register = () => {
                         <Form.Control type="password" placeholder="Password" name="password"/>
                         {formErrorValues.password ? <Form.Text className="error">{formErrorValues.password}</Form.Text> : null}
                     </Form.Group>
+                    <Form.Text className="text-muted">
+                        <Link to='/sign-in'>
+                            Already have an account?
+                        </Link>
+                    </Form.Text>
                     <Form.Group>
-                        <Form.Text className="text-muted">
-                            <Link to='/sign-in'>
-                                Already have an account?
-                            </Link>
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group>
-                        <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
+                        <Button variant="primary" disabled={disabled} className="button" type="submit" onClick={handleSubmit}>
                             Register
                         </Button>
                     </Form.Group>
