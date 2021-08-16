@@ -26,9 +26,10 @@ const PotluckPage = () => {
     const { id } = useParams()
     const [potluck, setPotluck] = useState(initialPotluck)
     const [isOrganizer, setIsOrganizer] = useState(false)
-    const [item, setItem] = useState()
-    const [guest, setGuest] = useState()
+    const [item, setItem] = useState({item_name: ''})
+    const [guest, setGuest] = useState({username: ''})
     const [update, setUpdate] = useState(false)
+    const [error, setError] = useState(false)
     const user = localStorage.getItem("user")
     const { push } = useHistory()
 
@@ -37,7 +38,7 @@ const PotluckPage = () => {
         .get(`/api/potlucks/${id}`)
         .then(res => {
             setPotluck(res.data)
-            console.log(res.data.guests)
+            setError(false)
             return res.data.guests
         }).then(res => {
             const organizer = res.filter(guest => {
@@ -103,7 +104,9 @@ const PotluckPage = () => {
         })
         .catch(err => {
             console.log(err)
+            setError(true)
         })
+        setGuest({username: ''})
     }
     
     const handleBring = (id) => {
@@ -171,14 +174,15 @@ const PotluckPage = () => {
                             <Form className="form">
                                 <Form.Group className="mb-3" controlId="formBasicItem" value={item} onChange={handleItemChange}>
                                     <Form.Label>Add Item</Form.Label>
-                                    <Form.Control placeholder="Enter Item Name" name="item_name"/>
+                                    <Form.Control placeholder="Enter Item Name" name="item_name" value={item.item_name}/>
                                 </Form.Group>
                                 <Button variant="primary" className="button" type="submit" onClick={handleItemSubmit}>Add Item</Button>
                             </Form>
                             <Form className="form">
                                 <Form.Group className="mb-3" controlId="formBasicItem" value={guest} onChange={handleGuestChange}>
                                     <Form.Label>Add Guest</Form.Label>
-                                    <Form.Control placeholder="Enter Guest's Username" name="username"/>
+                                    <Form.Control placeholder="Enter Guest's Username" name="username" value={guest.username}/>
+                                    {error ? <Form.Text className="error">User not found</Form.Text> : null}
                                 </Form.Group>
                                 <Button variant="primary" className="button" type="submit" onClick={handleGuestSubmit}>Add Guest</Button>
                             </Form>
