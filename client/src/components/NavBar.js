@@ -30,7 +30,7 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/home">Home</Nav.Link>
+                            {loggedIn ? <></> : <Nav.Link href="/home">Home</Nav.Link>}
                             {loggedIn ? <></> : <Nav.Link href="/sign-in">Sign In</Nav.Link>}
                             {loggedIn ? <></> : <Nav.Link href="/register">Register</Nav.Link>}
                             {loggedIn ? <Nav.Link href="/potlucks">Potlucks</Nav.Link> : <></>}
