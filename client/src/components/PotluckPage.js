@@ -119,6 +119,7 @@ const PotluckPage = () => {
             console.log(err)
         })
     }
+    console.log(potluck.items)
 
     return(
         <div className="splash">
@@ -141,7 +142,7 @@ const PotluckPage = () => {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Items</Accordion.Header>
                             <Accordion.Body>
-                                {potluck.items.length ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Card.Link onClick={() => handleBring(item.item_id)}>Bring</Card.Link>}</ListGroupItem>) : <p>Loading...</p>}
+                                {potluck.items.length && potluck.items[0].item_id != null ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Card.Link onClick={() => handleBring(item.item_id)}>Bring</Card.Link>}</ListGroupItem>) : null}
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
