@@ -30,17 +30,17 @@ const NavBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            {loggedIn ? <></> : <Nav.Link href="/home">Home</Nav.Link>}
+                            {loggedIn ? <></> : <Nav.Link href="/">Home</Nav.Link>}
                             {loggedIn ? <></> : <Nav.Link href="/sign-in">Sign In</Nav.Link>}
                             {loggedIn ? <></> : <Nav.Link href="/register">Register</Nav.Link>}
                             {loggedIn ? <Nav.Link href="/potlucks">Potlucks</Nav.Link> : <></>}
-                            {loggedIn ? <Nav.Link href="/home" onClick={logout}>Logout</Nav.Link> : <></>}
+                            {loggedIn ? <Nav.Link href="/" onClick={logout}>Logout</Nav.Link> : <></>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
 
-            <Route path="/home">
+            <Route path="/">
                 <Home/>
             </Route>
 
