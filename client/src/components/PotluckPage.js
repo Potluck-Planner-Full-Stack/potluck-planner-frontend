@@ -175,7 +175,7 @@ const PotluckPage = () => {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Items</Accordion.Header>
                             <Accordion.Body>
-                                {potluck.items.length && potluck.items[0].item_id != null ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Card.Link onClick={() => handleBring(item.item_id)}>Bring</Card.Link>} {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => handleItemDelete(item.item_id)}>
+                                {potluck.items.length && potluck.items[0].item_id != null ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Button variant="primary" className="button" type="submit" onClick={() => handleBring(item.item_id)}>Bring</Button>} {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => handleItemDelete(item.item_id)}>
                             Delete
                             </Button> : <></>
                         }</ListGroupItem>) : null}
