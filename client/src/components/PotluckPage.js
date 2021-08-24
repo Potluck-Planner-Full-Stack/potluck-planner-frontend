@@ -28,6 +28,7 @@ const PotluckPage = () => {
     const [guest, setGuest] = useState({username: ''})
     const [update, setUpdate] = useState(false)
     const [error, setError] = useState(false)
+    const [itemError, setItemError] = useState(false)
     const user = localStorage.getItem("user")
     const { push } = useHistory()
 
@@ -49,6 +50,13 @@ const PotluckPage = () => {
             console.log(err)
         })
     }, [update])
+
+    // const validate = (name, value) => {
+    //     yup.reach(addItemSchema, name)
+    //         .validate(value)
+    //         .then(() => setFormErrorValues({...formErrorValues, [name]:""}))
+    //         .catch(err => setFormErrorValues({...formErrorValues, [name]:err.errors[0]}))
+    // }
 
     const handleDelete = () => {
         axiosWithAuth()
@@ -78,17 +86,22 @@ const PotluckPage = () => {
 
     const handleItemSubmit = (e) => {
         e.preventDefault()
-        axiosWithAuth()
-        .post(`/api/potlucks/${id}/items`, item)
-        .then(res => {
-            console.log(res)
-            setUpdate(true)
-            setUpdate(false)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        setItem({item_name: ''})
+        if(item.item_name && item.item_name.length !== 0){
+            axiosWithAuth()
+            .post(`/api/potlucks/${id}/items`, item)
+            .then(res => {
+                console.log(res)
+                setUpdate(true)
+                setUpdate(false)
+                setItemError(false)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            setItem({item_name: ''})
+        } else {
+            setItemError(true)
+        }
     }
 
     const handleGuestSubmit = (e) => {
@@ -119,7 +132,6 @@ const PotluckPage = () => {
             console.log(err)
         })
     }
-    console.log(potluck.items)
 
     return(
         <div className="splash">
@@ -174,6 +186,7 @@ const PotluckPage = () => {
                                 <Form.Group className="mb-3" controlId="formBasicItem" value={item} onChange={handleItemChange}>
                                     <Form.Label>Add Item</Form.Label>
                                     <Form.Control placeholder="Enter Item Name" name="item_name" value={item.item_name}/>
+                                    {itemError ? <Form.Text className="error">Item name required</Form.Text> : null}
                                 </Form.Group>
                                 <Button variant="primary" className="button" type="submit" onClick={handleItemSubmit}>Add Item</Button>
                             </Form>
