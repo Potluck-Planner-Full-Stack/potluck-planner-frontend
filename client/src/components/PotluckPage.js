@@ -51,13 +51,6 @@ const PotluckPage = () => {
         })
     }, [update])
 
-    // const validate = (name, value) => {
-    //     yup.reach(addItemSchema, name)
-    //         .validate(value)
-    //         .then(() => setFormErrorValues({...formErrorValues, [name]:""}))
-    //         .catch(err => setFormErrorValues({...formErrorValues, [name]:err.errors[0]}))
-    // }
-
     const handleDelete = () => {
         axiosWithAuth()
         .delete(`/api/potlucks/${id}`)
@@ -121,8 +114,23 @@ const PotluckPage = () => {
     }
     
     const handleBring = (id) => {
+        console.log(id)
         axiosWithAuth()
         .put(`/api/potlucks/items/${id}`, {select_item: true})
+        .then(res => {
+            console.log(res)
+            setUpdate(true)
+            setUpdate(false)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    const handleItemDelete = (id) => {
+        console.log(id)
+        axiosWithAuth()
+        .delete(`api/potlucks/items/${id}`)
         .then(res => {
             console.log(res)
             setUpdate(true)
@@ -154,7 +162,10 @@ const PotluckPage = () => {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Items</Accordion.Header>
                             <Accordion.Body>
-                                {potluck.items.length && potluck.items[0].item_id != null ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Card.Link onClick={() => handleBring(item.item_id)}>Bring</Card.Link>}</ListGroupItem>) : null}
+                                {potluck.items.length && potluck.items[0].item_id != null ? potluck.items.map(item => <ListGroupItem className="items" key={item.item_id}>{item.item_name} {item.user_id ? <></> : <Card.Link onClick={() => handleBring(item.item_id)}>Bring</Card.Link>} {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={() => handleItemDelete(item.item_id)}>
+                            Delete
+                            </Button> : <></>
+                        }</ListGroupItem>) : null}
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
