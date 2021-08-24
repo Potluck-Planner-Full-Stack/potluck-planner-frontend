@@ -1,10 +1,13 @@
+import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import axiosWithAuth from '../utils/axiosWithAuth'
+
+// styling //
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useHistory } from 'react-router-dom'
-import axiosWithAuth from '../utils/axiosWithAuth'
-import { useState } from 'react'
+
 
 const initialFormValues = {
     potluck_name: '',

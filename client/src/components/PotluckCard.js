@@ -1,7 +1,10 @@
-import Card from 'react-bootstrap/Card'
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
+
+// styling //
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+
 
 const PotluckCard = (props) => {
     const { id, name, date, time, location } = props

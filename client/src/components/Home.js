@@ -1,5 +1,8 @@
-import Button from 'react-bootstrap/Button'
 import { useHistory } from 'react-router-dom'
+ 
+// styling //
+import Button from 'react-bootstrap/Button'
+
 
 const Home = () => {
     const { push } = useHistory()

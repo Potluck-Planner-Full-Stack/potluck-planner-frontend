@@ -1,8 +1,10 @@
 import { useParams, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
-import Container from 'react-bootstrap/Container'
 import dateFormat from 'dateformat'
+
+// Styling //
+import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Card from 'react-bootstrap/Card'
@@ -51,7 +53,7 @@ const PotluckPage = () => {
         })
     }, [update])
 
-    const handleDelete = () => {
+    const handleDeletePotluck = () => {
         axiosWithAuth()
         .delete(`/api/potlucks/${id}`)
         .then(res => {
@@ -185,7 +187,7 @@ const PotluckPage = () => {
                             <Accordion.Header>Guests</Accordion.Header>
                             <Accordion.Body>
                                 <ListGroup className="list-group-flush">
-                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id} className='guests'>{guest.username} {guest.is_going? <p>Is Going</p> : null} {localStorage.getItem("user") === guest.username && guest.is_going == false ? <Button variant="primary" className="button" type="submit" onClick={handleRSVP}>RSVP</Button> : null}</ListGroupItem>) : <p>Loading...</p>}
+                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id} className='guests'>{guest.username} {guest.is_going? <p>Is Going</p> : null} {user === guest.username && guest.is_going === false ? <Button variant="primary" className="button" type="submit" onClick={handleRSVP}>RSVP</Button> : null}</ListGroupItem>) : <p>Loading...</p>}
                                 </ListGroup>
                             </Accordion.Body>
                         </Accordion.Item>
@@ -197,7 +199,7 @@ const PotluckPage = () => {
                             Edit
                             </Button> : <></>
                         }
-                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={handleDelete}>
+                        {isOrganizer? <Button variant="primary" className="button" type="submit" onClick={handleDeletePotluck}>
                             Delete
                             </Button> : <></>
                         }

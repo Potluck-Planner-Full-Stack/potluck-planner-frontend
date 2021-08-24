@@ -1,19 +1,20 @@
+import { useHistory, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import dateFormat from 'dateformat'
+import axiosWithAuth from '../utils/axiosWithAuth'
+
+// styling //
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useHistory, useParams } from 'react-router-dom'
-import axiosWithAuth from '../utils/axiosWithAuth'
-import { useState, useEffect } from 'react'
-import dateFormat from 'dateformat'
+
 
 const initialFormValues = {
     potluck_name: '',
     potluck_date: '',
     potluck_time: '',
-    potluck_location: '',
-    // items: '',
-    // guests: ''
+    potluck_location: ''
 }
 
 const EditPotluck = () => {
@@ -87,16 +88,6 @@ const EditPotluck = () => {
                     <Form.Label>Location</Form.Label>
                     <Form.Control placeholder="Address" name="potluck_location" value={formValues.potluck_location}/>
                 </Form.Group>
-
-                {/* <Form.Group className="mb-3" controlId="formGridAddress2" value={formValues.items} onChange={handleChange}>
-                    <Form.Label>Add Items</Form.Label>
-                    <Form.Control placeholder="Add Item" name="items"/>
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formGridAddress2" value={formValues.guests} onChange={handleChange}>
-                    <Form.Label>Add Guests</Form.Label>
-                    <Form.Control placeholder="Add Guest" name="guests"/>
-                </Form.Group> */}
 
                 <Button variant="primary" className="button" type="submit" onClick={handleSubmit}>
                     Submit Changes

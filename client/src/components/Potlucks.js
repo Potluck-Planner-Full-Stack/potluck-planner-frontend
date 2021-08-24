@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
-import axiosWithAuth from '../utils/axiosWithAuth'
-import PotluckCard from './PotluckCard'
-import Button from 'react-bootstrap/Button'
 import { useHistory } from 'react-router-dom'
+import axiosWithAuth from '../utils/axiosWithAuth'
+
+// components //
+import PotluckCard from './PotluckCard'
+
+// styling //
+import Button from 'react-bootstrap/Button'
+
 
 const Potlucks = () => {
     const [potlucks, setPotlucks] = useState([])
     const { push } = useHistory()
 
     useEffect(() => {
-
         axiosWithAuth().get('/api/potlucks')
         .then(res => {
             const invited = []

@@ -1,10 +1,15 @@
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
 import schema from '../validation/registerFormSchema'
 import * as yup from 'yup'
+
+// components //
+import Form from 'react-bootstrap/Form'
+
+// styling //
+import Button from 'react-bootstrap/Button'
+
 
 const initialFormValues = {
     username: '',

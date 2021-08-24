@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
 import { Route } from 'react-router-dom'
+
+// components //
 import SignIn from './SignIn'
 import Register from './Register'
 import Potlucks from './Potlucks'
@@ -10,6 +9,12 @@ import PotluckPage from './PotluckPage'
 import CreatePotluck from './CreatePotluck'
 import Home from './Home'
 import EditPotluck from './EditPotluck'
+
+// styling //
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+
 
 const NavBar = () => {
     const [loggedIn, setLoggedIn] = useState(false)
