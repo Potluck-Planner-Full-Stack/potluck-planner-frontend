@@ -172,7 +172,7 @@ const PotluckPage = () => {
                             <Accordion.Header>Guests</Accordion.Header>
                             <Accordion.Body>
                                 <ListGroup className="list-group-flush">
-                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id}>{guest.username}</ListGroupItem>) : <p>Loading...</p>}
+                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id} className='guests'>{guest.username} {guest.is_going? <p>Is Going</p> : null}</ListGroupItem>) : <p>Loading...</p>}
                                 </ListGroup>
                             </Accordion.Body>
                         </Accordion.Item>

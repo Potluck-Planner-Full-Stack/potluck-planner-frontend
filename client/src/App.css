@@ -98,3 +98,8 @@ h1 {
 .error {
   color: red
 }
+
+.guests {
+  display: flex;
+  justify-content: space-between;
+}
