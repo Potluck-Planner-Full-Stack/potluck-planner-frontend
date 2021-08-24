@@ -141,6 +141,19 @@ const PotluckPage = () => {
         })
     }
 
+    const handleRSVP = () => {
+        axiosWithAuth()
+        .put(`api/potlucks/${id}/guests`)
+        .then(res => {
+            console.log(res)
+            setUpdate(true)
+            setUpdate(false)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     return(
         <div className="splash">
             <Container className="potluckWrapper">
@@ -172,7 +185,7 @@ const PotluckPage = () => {
                             <Accordion.Header>Guests</Accordion.Header>
                             <Accordion.Body>
                                 <ListGroup className="list-group-flush">
-                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id} className='guests'>{guest.username} {guest.is_going? <p>Is Going</p> : null}</ListGroupItem>) : <p>Loading...</p>}
+                                    {potluck.guests.length ? potluck.guests.map(guest => <ListGroupItem key={guest.user_id} className='guests'>{guest.username} {guest.is_going? <p>Is Going</p> : null} {localStorage.getItem("user") === guest.username && guest.is_going == false ? <Button variant="primary" className="button" type="submit" onClick={handleRSVP}>RSVP</Button> : null}</ListGroupItem>) : <p>Loading...</p>}
                                 </ListGroup>
                             </Accordion.Body>
                         </Accordion.Item>
