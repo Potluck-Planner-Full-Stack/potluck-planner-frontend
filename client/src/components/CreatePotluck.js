@@ -11,8 +11,8 @@ import Button from 'react-bootstrap/Button'
 
 const initialFormValues = {
     potluck_name: '',
-    potluck_date: '',
-    potluck_time: '',
+    potluck_date: null,
+    potluck_time: null,
     potluck_location: ''
 }
 
@@ -31,6 +31,7 @@ const CreatePotluck = () => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(formValues)
         if(formValues.potluck_name && formValues.potluck_name !== 0){
             setRequiredError(false)
             axiosWithAuth()
