@@ -1,3 +1,13 @@
+html {
+  height: 100%;
+  margin: 0;
+  background: url('https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80');
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+}
+
 .App {
   text-align: center;
 }
@@ -18,26 +28,24 @@
 }
 
 .splash {
-  /* border: 1px solid red; */
   display: flex;
-  height: 95vh;
+  height: 100%;
   background-image: url('https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80');
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
   background-position: center;
   justify-content: center;
 }
 
 .homeContainer {
-  /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 95vh;
 }
 
 .description {
-  /* border: 1px solid blue; */
   width: 45%;
   font-weight: 650;
 }
