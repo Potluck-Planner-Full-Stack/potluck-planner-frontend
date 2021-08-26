@@ -36,7 +36,7 @@ const Potlucks = () => {
 
     return(
         <div className="splash">
-            <div>
+            <div className="potlucks">
                 <h1>Potlucks</h1>
                 <Button variant="primary" className="button" onClick={handleCreate}>Create Potluck</Button>
                 <section className="potlucksContainer">

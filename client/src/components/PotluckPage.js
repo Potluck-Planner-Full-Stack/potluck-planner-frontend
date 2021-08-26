@@ -159,7 +159,7 @@ const PotluckPage = () => {
     return(
         <div className="splash">
             <Container className="potluckWrapper">
-                <Card style={{ width: '50rem' }}>
+                <Card style={{ width: 'fluid' }}>
                     <Card.Body>
                         <Card.Title>{potluck.potluck_name}</Card.Title>
                         <Card.Text>
@@ -205,7 +205,7 @@ const PotluckPage = () => {
                         }
                     </Card.Body>
                 </Card>
-                <Container>
+                <Container className="addItemGuest">
                         {isOrganizer ? 
                         <div>
                             <Form className="form">

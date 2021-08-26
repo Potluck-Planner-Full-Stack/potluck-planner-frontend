@@ -67,7 +67,7 @@ html {
 }
 
 .potluckWrapper {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,4 +110,31 @@ h1 {
 .guests {
   display: flex;
   justify-content: space-between;
+}
+
+.potlucks {
+  height: 95vh;
+}
+
+.addItemGuest {
+  width: 40%;
+}
+
+
+@media screen and (max-width: 480px) {
+  .potluckWrapper {
+    margin: 20% 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .potluckWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .addItemGuest {
+    width: 100%;
+  }
 }
