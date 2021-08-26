@@ -24,6 +24,8 @@ If you have ever tried to organize a potluck through text messages, online to-do
 
 In the world of social gatherings and potlucks the "Potluck Planner" is king. This is your place for all things pot luck.
 
+# Features
+
 1. As an `organizer` you can create an upcoming `potluck` and invite my friends to attend
 
 2. As an `organizer` you can adjust `date`s, `time`s and `location`s of the potluck
@@ -33,3 +35,14 @@ In the world of social gatherings and potlucks the "Potluck Planner" is king. Th
 4. As a `guest` to a potluck you can confirm that I'm going to the upcoming `event` ***feature coming soon***
 
 5. As a `guest` you can select which `item`s I'd like to be responsible for bringing
+
+# Features to Implement in the Future:
+
+    - Guest can un-RSVP for potluck
+
+    - Can add quantity of items needed and guest can choose how many to bring
+
+    - Add a reminders functionality that allows users to link up their upcoming `date`s to their Google calendar.
+
+    - Ability to upload multiple `photos` from the potluck gathering, like a photo gallery for a past event.
+    
