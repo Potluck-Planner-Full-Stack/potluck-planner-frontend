@@ -1,6 +1,7 @@
 ## Getting started
 - clone repo
 - cd into 'potluck-planner-backend' directory
+- cd into 'client'
 - run 'npm install'
 - run 'npm start' or 'npm run server' for nodemon
 
